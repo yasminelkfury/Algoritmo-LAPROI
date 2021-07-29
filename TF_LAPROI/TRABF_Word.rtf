@@ -1,0 +1,246 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang22 #include <stdio.h>\par
+#include <string.h>\par
+#include <stdlib.h>\par
+\par
+struct Loja \{\par
+\tab char NomeVinho[30];\par
+\tab char NomeVinicula[30];\par
+\tab char pais[20];\par
+\tab int anodovinho;\par
+\tab int codigodovinho;\par
+\tab float precodovinho;\par
+\tab struct Loja *proximo;\par
+\};\par
+\par
+struct Loja *V;\par
+\par
+void cadastrar_vinho(char NomeVinho[30], char NomeVinicula[30], char pais[20], int codigodovinho, int anodovinho, float precodovinho)\{\par
+struct Loja *aux, *b;\par
+\tab aux = malloc(sizeof(struct Loja));\par
+\tab int i;\par
+\par
+\par
+        aux->anodovinho = anodovinho;\par
+        strcpy(aux->NomeVinho, NomeVinho);\par
+        strcpy(aux->NomeVinicula, NomeVinicula);\par
+        strcpy(aux->pais, pais);\par
+        aux->codigodovinho = codigodovinho;\par
+        aux->precodovinho = precodovinho;\par
+\tab aux->proximo = 0;\par
+\par
+\par
+\par
+        if(V == 0)\{\par
+           V = aux;\par
+\tab\}\par
+        else\{\par
+           b = V;\par
+           \tab while(b->proximo != 0)\{\par
+                 b = b->proximo;\par
+\par
+                \}\par
+\tab b -> proximo = aux;\par
+\tab\}\par
+\par
+\par
+\}\par
+void Imprimir_Lista()\{\par
+struct Loja *aux;\par
+\par
+aux = V;\par
+\par
+\tab while(aux != 0)\{\par
+\par
+\tab\tab printf("%d\\n", aux->anodovinho);\par
+\tab\tab printf("%d\\n", aux->codigodovinho);\par
+\tab\tab printf("%f\\n", aux->precodovinho);\par
+\tab\tab printf("%s\\n", aux->NomeVinho);\par
+\tab\tab printf("%s\\n", aux->NomeVinicula);\par
+\tab\tab printf("%s\\n\\n\\n", aux->pais);\par
+\tab\tab aux = aux->proximo;\par
+\tab\}\par
+\}\par
+void Remover_Vinho(int codigodovinho) \{\par
+struct Loja *aux;\par
+aux = V;\par
+\tab    if(aux->codigodovinho != codigodovinho)\{\par
+\tab\tab aux = aux->proximo;\par
+\tab    \}\par
+\tab    else \{\par
+\tab\tab free(V);\par
+\tab\tab V = NULL;\par
+          \tab\tab Imprimir_Lista();\par
+\tab\tab\}\par
+\tab\tab\tab Imprimir_Lista();\par
+\}\par
+void Buscar_Vinho(int codigodovinho)\{\par
+struct Loja *aux;\par
+aux = V;\par
+    while(aux != 0)\{\par
+\tab\tab if(aux ->codigodovinho != codigodovinho)\{\par
+\tab\tab\tab aux = aux->proximo;\par
+\tab\tab\}\par
+\tab\tab else\{\par
+\tab\tab\tab printf("Achei!")\par
+\tab\tab Imprimir_Lista();\par
+\tab\tab\}\par
+    \}\par
+\}\par
+void Ordenar_Vinho(opcao)\{\par
+struct Loja *aux, *B, *C;\par
+aux = V;\par
+int x,n,A;\par
+float w,D;\par
+\tab while(C->proximo != 0)\{\par
+\tab\tab C = C->proximo;\par
+\tab\tab B = B->aux;\par
+\tab\tab while(B->aux !=0)\{\par
+\tab\tab\tab if(y == 'C' || y == 'c')\{\par
+\tab\tab\tab\tab x = aux->codigodovinho;\par
+\tab\tab\tab\tab if(x < C->codigodovinho)\{\par
+\tab\tab\tab\tab\tab A = B->codigodovinho;\par
+\tab\tab\tab\tab\tab B->codigodovinho = C->codigodovinho;\par
+\tab\tab\tab\tab\tab C->codigodovinho = A;\par
+\tab\tab\tab\tab\tab A = B->anodovinho;\par
+\tab\tab\tab\tab\tab B->anodovinho = C->anodovinho;\par
+\tab\tab\tab\tab\tab C->anodovinho = A;\par
+\tab\tab\tab\tab\tab A = B->NomeVinho;\par
+\tab\tab\tab\tab\tab B->NomeVinho = C->NomeVinho;\par
+\tab\tab\tab\tab\tab C->NomeVinho = A;\par
+\tab\tab\tab\tab\tab A = B->NomeVinicula;\par
+\tab\tab\tab\tab\tab B->NomeVinicula = C->NomeVinicula;\par
+\tab\tab\tab\tab\tab C->NomeVinicula = A;\par
+\tab\tab\tab\tab\tab A = B->pais;\par
+\tab\tab\tab\tab\tab B->pais = C->pais;\par
+\tab\tab\tab\tab\tab C->pais = A;\par
+\tab\tab\tab\tab\tab A = B->precodovinho;\par
+\tab\tab\tab\tab\tab B->precodovinho = C->precodovinho;\par
+\tab\tab\tab\tab\tab C->precodovinho = A;\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab else\{\par
+                    printf("Terminei!");\par
+            \}        Imprimir_Lista();\par
+\tab\tab\tab\tab\}\par
+            else if(y == 'A' || y == 'a')\{\par
+                n = aux->anodovinho;\par
+                if(n < C->codigodovinho)\{\par
+                    A = B->anodovinho;\par
+\tab\tab\tab\tab\tab B->anodovinho = C->anodovinho;\par
+\tab\tab\tab\tab\tab C->anodovinho = A;\par
+                    A = B->codigodovinho;\par
+\tab\tab\tab\tab\tab B->codigodovinho = C->codigodovinho;\par
+\tab\tab\tab\tab\tab C->codigodovinho = A;\par
+\tab\tab\tab\tab\tab A = B->NomeVinho;\par
+\tab\tab\tab\tab\tab B->NomeVinho = C->NomeVinho;\par
+\tab\tab\tab\tab\tab C->NomeVinho = A;\par
+\tab\tab\tab\tab\tab A = B->NomeVinicula;\par
+\tab\tab\tab\tab\tab B->NomeVinicula = C->NomeVinicula;\par
+\tab\tab\tab\tab\tab C->NomeVinicula = A;\par
+\tab\tab\tab\tab\tab A = B->pais;\par
+\tab\tab\tab\tab\tab B->pais = C->pais;\par
+\tab\tab\tab\tab\tab C->pais = A;\par
+\tab\tab\tab\tab\tab A = B->precodovinho;\par
+\tab\tab\tab\tab\tab B->precodovinho = C->precodovinho;\par
+\tab\tab\tab\tab\tab C->precodovinho = A;\par
+                \}\par
+                else\{\par
+                    printf("Terminei!");\par
+            \}        Imprimir_Lista();\par
+        \}\par
+            else if(y == 'R' || y == 'r')\{\par
+                w = aux->precodovinho;\par
+                if(w < C->precodovinho)\{\par
+                    A = B->precodovinho;\par
+                    B->precodovinho = C->precodovinho;\par
+                    C->precodovinho = A;\par
+                    A = B->anodovinho;\par
+                    B->anodovinho = C->anodovinho;\par
+                    C->anodovinho = A;\par
+                    A = B->codigodovinho;\par
+                    B->codigodovinho = C->codigodovinho;\par
+                    C->codigodovinho = A;\par
+                    A = B->NomeVinho;\par
+                    B->NomeVinho = C->NomeVinho;\par
+                    C->NomeVinho = A;\par
+                    A = B->NomeVinicula;\par
+                    B->NomeVinicula = C->NomeVinicula;\par
+                    C->NomeVinicula = A;\par
+                    A = B->pais;\par
+                    B->pais = C->pais;\par
+                    C->pais = A;\par
+                \}\par
+                else\{\par
+                    printf("Terminei!");\par
+                \}        Imprimir_Lista();\par
+            \}\par
+\tab\tab\}\par
+\tab\}\par
+int main(void) \{\par
+char x,y;\par
+struct Loja *V;\par
+int codigodovinho, anodovinho;\par
+char NomeVinho[30], NomeVinicula[30], pais[20];\par
+float precodovinho;\par
+\tab V = 0;\par
+\tab do\{\par
+\tab\tab printf("\\nEscolha uma op\'e7\'e3o abaixo:\\n");\par
+\tab\tab printf("C - Para cadastrar o vinho\\n");\par
+\tab\tab printf("R - Para remover um vinho\\n");\par
+\tab\tab printf("B - Para buscar um vinho\\n");\par
+\tab\tab printf("O - Para ordenar a lista\\n");\par
+\tab\tab printf("I - Para imprimir a lista\\n");\par
+\tab\tab printf("S - Para sair do programa\\n");\par
+\tab\tab scanf("%c", &x);\par
+\par
+\tab\tab if(x == 'S' || x == 's')\{\par
+\tab\tab\tab break;\par
+\tab\tab\}\par
+\tab\tab if(x == 'C'||x == 'c')\{\par
+\tab\tab printf("\\nDigite o codigo: ");\par
+\tab\tab\tab scanf("\\n%d", &codigodovinho);\par
+\tab\tab printf("\\nDigite o nome: ");\par
+\tab\tab\tab scanf("\\n%[^\\n]s", NomeVinho);\par
+\tab\tab printf("\\nDigite a vinicula: ");\par
+\tab\tab\tab  scanf("\\n%[^\\n]s", NomeVinicula);\par
+\tab\tab printf("\\nDigite o ano: ");\par
+\tab\tab\tab scanf("\\n%d", &anodovinho);\par
+\tab\tab printf("\\nDigite o pre\'e7o ");\par
+\tab\tab\tab scanf("\\n%f", &precodovinho);\par
+\tab\tab printf("\\nDigite o pais: ");\par
+\tab\tab\tab scanf("\\n%s", pais);\par
+\par
+\par
+\tab\tab cadastrar_vinho(NomeVinho, NomeVinicula, pais, codigodovinho, anodovinho, precodovinho);\par
+\par
+\tab\tab\}\par
+\tab\tab else if (x == 'I' || x == 'i') \{\par
+\tab\tab Imprimir_Lista();\par
+\tab\tab\}\par
+\tab\tab else if (x == 'R'||x == 'r') \{\par
+\tab\tab\tab printf("Digite o c\'f3digo do vinho para remover: ");\par
+\tab\tab\tab scanf("%d", &codigodovinho);\par
+\tab\tab Remover_Vinho(codigodovinho);\par
+\tab\tab\}\par
+\tab\tab else if ( x== 'B' || x == 'b')\{\par
+\tab\tab\tab printf("Digite o c\'f3digo do vinho: ");\par
+\tab\tab\tab scanf("%d", &codigodovinho);\par
+\tab\tab Buscar_Vinho(codigodovinho);\par
+\}\par
+\tab\tab else if(x == 'O' || x == 'o')\{\par
+\tab\tab\tab printf("Escolha uma op\'e7\'e3o abaixo:");\par
+\tab\tab\tab //printf("N - Para ordenar por Nome e Vinicula");\par
+\tab\tab\tab printf("C - Para ordenar por codigo");\par
+\tab\tab\tab printf("A - Para ordenar por ano");\par
+\tab\tab\tab //printf("P - Para ordenar por pais");\par
+\tab\tab\tab printf("R - Para ordenar por pre\'e7o");\par
+\tab\tab\tab scanf("%c", &y);\par
+\tab\tab\tab\tab Ordenar_Vinho(y);\par
+\}\par
+\tab\tab scanf("%c", &x);\par
+\tab\}while(x != 'S' || x != 's');\par
+return 0;\par
+\}\par
+}
+ 
